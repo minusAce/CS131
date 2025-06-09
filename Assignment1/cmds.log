@@ -1,0 +1,5 @@
+1. "cd ~" to get home directory. "pwd" to get the path.
+
+2. "cd /" to get to root. Then "cd proc" and "ls" to find the information about memory and CPU under the meminfo and cpuinfo files.
+
+3. "cd /" to get to root. Then "cd etc" and "ls" to find the operating system version under ec2_version.

@@ -1,0 +1,7 @@
+1. My home directory is /home/gabriel_danekari.
+
+2. The files are meminfo for memory information and cpuinfo for CPU information.
+
+3. The file that contains the operating system version is ec2_version and the operating system is Ubuntu 20.04.6 LTS (Focal Fossa).
+
+4.
