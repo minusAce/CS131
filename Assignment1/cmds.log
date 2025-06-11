@@ -3,3 +3,11 @@
 2. "cd /" to get to root. Then "cd proc" and "ls" to find the information about memory and CPU under the meminfo and cpuinfo files.
 
 3. "cd /" to get to root. Then "cd etc" and "ls" to find the operating system version under ec2_version.
+
+4a. I used "grep "2019-04-02" 2019-04.csv | cut -d "," -f 8 | sort | uniq -c | sort" to identify all pickup locations on April 2nd, 2019. The first command will get all the data with the string
+"2019-04-02" which is the pickup date. The second command will cut all the fields that are not field 8 or the pickup location id. The list will then be sorted and then "uniq -c" will count
+the amount of times the pickup location id appears. It will then be sorted again by the counted amount going from least to greatest 
+
+4b. I used "grep "2019-04-10" 2019-04.csv | cut -d "," -f 8 | sort | uniq -c | sort" to identify all pickup locations on April 10th, 2019. The first command will get all the data with the string 
+"2019-04-10" which is the pickup date. The second command will cut all the fields that are not field 8 or the pickup location id. The list will then be sorted and then "uniq -c" will count
+the amount of times the pickup location id appears. It will then be sorted again by the counted amount going from least to greatest

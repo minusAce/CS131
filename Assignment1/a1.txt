@@ -4,4 +4,12 @@
 
 3. The file that contains the operating system version is ec2_version and the operating system is Ubuntu 20.04.6 LTS (Focal Fossa).
 
-4.
+4a. The top 3 pickup location ids are:
+11138 236.0
+12421 237.0
+13354 161.0
+
+4b. The top 3 pickup location ids are:
+11278 236.0
+12956 237.0
+13290 161.0
