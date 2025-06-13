@@ -4,10 +4,12 @@
 
 3. "cd /" to get to root. Then "cd etc" and "ls" to find the operating system version under ec2_version.
 
-4a. I used "grep "2019-04-02" 2019-04.csv | cut -d "," -f 8 | sort | uniq -c | sort" to identify all pickup locations on April 2nd, 2019. The first command will get all the data with the string
-"2019-04-02" which is the pickup date. The second command will cut all the fields that are not field 8 or the pickup location id. The list will then be sorted and then "uniq -c" will count
-the amount of times the pickup location id appears. It will then be sorted again by the counted amount going from least to greatest.
+4a. I used "cut -d "," -f 2,8 2019-04.csv | grep "2019-04-02" | cut -d "," -f 2 | sort | uniq -c | sort" to identify all pickup locations on April 2nd, 2019. The first command cuts all the fields except the pickup date
+and the pickup location id. The second command will look through the pickup dates and only get the ones that match "2019-04-02" or April 2nd, 2019. Then it will return a list with the pickup locations that match and then
+the third command will cut all the fields except the pickup location ids. They will then be sorted since in order to use uniq -c they first need to be sorted then they will be counted then sorted again so I can easily see
+the top 3 results.
 
-4b. I used "grep "2019-04-10" 2019-04.csv | cut -d "," -f 8 | sort | uniq -c | sort" to identify all pickup locations on April 10th, 2019. The first command will get all the data with the string 
-"2019-04-10" which is the pickup date. The second command will cut all the fields that are not field 8 or the pickup location id. The list will then be sorted and then "uniq -c" will count
-the amount of times the pickup location id appears. It will then be sorted again by the counted amount going from least to greatest.
+4b. I used "cut -d "," -f 2,8 2019-04.csv | grep "2019-04-10" | cut -d "," -f 2 | sort | uniq -c | sort" to identify all pickup locations on April 10th, 2019. The first command cuts all the fields except the pickup date
+and the pickup location id. The second command will look through the pickup dates and only get the ones that match "2019-04-10" or April 10th, 2019. Then it will return a list with the pickup locations that match and then
+the third command will cut all the fields except the pickup location ids. They will then be sorted since in order to use uniq -c they first need to be sorted then they will be counted then sorted again so I can easily see
+the top 3 results.
