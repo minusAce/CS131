@@ -1,0 +1,36 @@
+Objectives:
+Learn how to use the commands cut, sort, uniq -c, grep
+(Do not use the AWK command)
+
+Submission Guide:
+All of these questions should be answered while you are logged into the Google Cloud server.
+DO NOT COMMIT/PUSH the original dataset. (2019-04.csv)
+Make sure all files you submit are cleaned up and annotated by vim or nano so the TA can find your answer to each question easily.
+Please create a new directory named "a1" under the cs131 repo, store all required files under the directory, and push it to GitHub. 
+cmds.log should contain all commands used to answer the questions (annotate the file to indicate the corresponding question.)
+a1.txt should contain all terminal outputs to answer the questions. (annotate the file to indicate the corresponding question.)
+Submit a one-line git clone command so the grader can clone your repo.
+git clone <link to your github repo>
+
+Preparation:
+To download a large dataset file from Google Drive, we will use a "gdown" commandLinks to an external site..
+Since this is a third-party script, you need to install it manually.
+Install "pip" by "apt install python3-pip". If permission is required, use "sudo apt install python3-pip" 
+Install "gdown" by "pip install gdown".
+Download the taxi dataset by "gdown 18oi_OAsRnl8YAOxtQ5smcJsL7IHl-2x0"
+If the command cannot be found, you may have seen a warning like the following:
+"WARNING: The script gdown is installed in '/home/<user-name>/.local/bin' which is not on PATH."
+If this is the case, run
+/home/<user-name>/.local/bin/gdown 18oi_OAsRnl8YAOxtQ5smcJsL7IHl-2x0
+
+Tasks:
+What is your home directory path?  How did you find out (commands used)?
+Using only "ls" (and maybe "grep"), can you find out which file under directory /proc/ contains information about memory (mem) on your server? Which file contains information about the CPU's on your server?
+Identify the operating system version. Which file under /etc/ contains this information?
+Using the taxi dataset (2019-04.csv):
+Sort the pickup location IDs in order to find the most popular pickup locations on April 2nd, 2019. Identify the top 3 locations.
+Sort the pickup location IDs in order to find the most popular pickup locations on April 10th, 2019. Identify the top 3 locations.
+
+Hints (regex):
+^, $: start-of-line and end-of-line respectively.
+[^a]: any character except 'a' https://chortle.ccsu.edu/finiteautomata/Section07/sect07_12.html
