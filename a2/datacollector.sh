@@ -28,14 +28,32 @@ while read -r csv_file; do
 	echo "## Statistics (Numerical Features)"
 	num_cols=$(head -1 "$csv_file" | tr -d '"' | awk -F';' '{print NF}')
 	for ((i=1; i<=num_cols; i++)); do
+		header=$(head -1 "$csv_file" | tr -d '"' | cut -d ";" -f "$i")
 		num_check=$(sed -n '2p' "$csv_file" | cut -d ";" -f "$i")
 		if [[ $num_check =~ ^[0-9\.]+$ ]]; then
-			echo "abc"
-		else 
-			echo "d"
-		fi
+			awk -F';' -v col="$i" -v header="$header" '
+                		NR > 1 {
+                    			val = $col
+                        		if (min == "" || val < min) min = val
+                        		if (max == "" || val > max) max = val
+                        		sum += val
+                        		sumsq += val * val
+                        		count++
+                		}
+                		END {
+                    			if (count > 0) {
+                        			mean = sum / count
+                        			stddev = sqrt((sumsq - (sum * sum) / count) / count)
+                        			printf "%s stats:\n", header
+                        			printf "  Min: %.2f\n", min
+                        			printf "  Max: %.2f\n", max
+                        			printf "  Mean: %.3f\n", mean
+                        			printf "  Std Dev: %.3f\n", stddev
+                    			}
+                		}' "$csv_file"
+		else
+        		echo "$header is not numeric"
+    		fi
 	done
-    else
-        echo "File not found: $csv_file"
     fi
 done < extracted_files.txt
