@@ -17,4 +17,25 @@ else
 	exit 1
 fi
 
-echo "Creating Summary"
+while read -r csv_file; do
+    if [ -f "$csv_file" ]; then
+	echo ""
+        echo "#Feature Summary for $csv_file"
+	echo ""
+	echo "##Feature Index and Names"
+        head -1 "$csv_file" | tr -d '"' | tr ';' '\n' | nl -s '. '
+	echo ""
+	echo "## Statistics (Numerical Features)"
+	num_cols=$(head -1 "$csv_file" | tr -d '"' | awk -F';' '{print NF}')
+	for ((i=1; i<=num_cols; i++)); do
+		num_check=$(sed -n '2p' "$csv_file" | cut -d ";" -f "$i")
+		if [[ $num_check =~ ^[0-9\.]+$ ]]; then
+			echo "abc"
+		else 
+			echo "d"
+		fi
+	done
+    else
+        echo "File not found: $csv_file"
+    fi
+done < extracted_files.txt
