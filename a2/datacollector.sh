@@ -57,3 +57,5 @@ while read -r csv_file; do
     fi
 done < extracted_files.txt
 } > summary.md
+rm extracted_files.txt
+rm wine*
