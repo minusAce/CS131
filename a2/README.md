@@ -54,3 +54,21 @@ Below is a sample run of the script from a terminal:
 	| 3     | citric acid       | 0.00 | 1.00 | 0.271 | 0.195  |
 	...
 	| 12    | quality           | 3.00 | 8.00 | 5.636 | 0.807  |
+
+ 	# Feature Summary for winequality-white.csv
+
+	## Feature Index and Names
+	1. fixed acidity
+	2. volatile acidity
+	3. citric acid
+	...
+	12. quality
+
+	## Statistics (Numerical Features)
+	| Index | Feature           | Min  | Max  | Mean  | StdDev |
+	|-------|-------------------|------|------|-------|--------|
+	| 1     | fixed acidity     | 3.80 | 14.20 | 6.855 | 0.844  |
+	| 2     | volatile acidity  | 0.08 | 1.10 | 0.278 | 0.101  |
+	| 3     | citric acid       | 0.00 | 1.66 | 0.334 | 0.121  |
+	...
+	| 12    | quality           | 3.00 | 9.00 | 5.878 | 0.886  |
