@@ -25,7 +25,7 @@ The script will:
 # Demo
 Below is a sample run of the script from a terminal:
 
-$ ./datacollector.sh 
+$ ./datacollector.sh
 Please enter a URL to a CSV dataset: https://archive.ics.uci.edu/static/public/186/wine+quality.zip
 https://archive.ics.uci.edu/static/public/186/wine+quality.zip
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
