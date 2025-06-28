@@ -1,70 +1,58 @@
 # CSV Feature Summary Tool
 ## What this command does
-This shell script automates the process of downloading, extracting, and analyzing a CSV dataset (typically inside a ZIP file from a URL). It generates a markdown report (summary.md) that includes:
+This shell script automates the process of downloading, extracting, and analyzing a CSV dataset (typically inside a ZIP file from a URL). It generates a summary (summary.md) that includes:
 
-A list of all features (columns) in the dataset
+  A list of all features (columns) in the dataset
 
-Basic statistics (min, max, mean, standard deviation) for numerical features
+  Basic statistics (min, max, mean, standard deviation) for numerical features
 
 ## How to use this command
 Navigate to the directory containing the script.
 
 Run the script using:
 
-bash
-Copy
-Edit
-./your_script_name.sh
+./datacollector.sh
+
 When prompted, enter the URL to a ZIP file containing a CSV dataset.
 
 The script will:
 
-Download the ZIP file
-
-Extract the CSV file(s)
-
-Process each CSV file
-
-Output a readable markdown summary to summary.md
-
-Note: Ensure the CSV file is semicolon-separated (;) and that the first row contains headers.
+  1. Download the ZIP file
+  2. Extract the CSV file(s)
+  3. Process each CSV file
+  4. Output a summary to summary.md
 
 # Demo
 Below is a sample run of the script from a terminal:
 
-bash
-Copy
-Edit
-$ ./summary.sh
-Please enter a URL to a CSV dataset: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.zip
-https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.zip
+$ ./datacollector.sh 
+Please enter a URL to a CSV dataset: https://archive.ics.uci.edu/static/public/186/wine+quality.zip
+https://archive.ics.uci.edu/static/public/186/wine+quality.zip
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  478k  100  478k    0     0   728k      0 --:--:-- --:--:-- --:--:--  728k
-Downloaded File: winequality-red.zip
-Unzipping winequality-red.zip
+100 91353    0 91353    0     0   332k      0 --:--:-- --:--:-- --:--:--  332k
+Downloaded File: wine+quality.zip
+Unzipping wine+quality.zip
+Archive:  wine+quality.zip
+  inflating: winequality-red.csv     
+  inflating: winequality-white.csv   
+  inflating: winequality.names
+$ cat summary.md
 
-# Feature Summary for winequality-red.csv
+## Feature Summary for winequality-red.csv
 
-## Feature Index and Names
+### Feature Index and Names
 1. fixed acidity
 2. volatile acidity
 3. citric acid
-4. residual sugar
-5. chlorides
-6. free sulfur dioxide
-7. total sulfur dioxide
-8. density
-9. pH
-10. sulphates
-11. alcohol
+...
 12. quality
 
 ## Statistics (Numerical Features)
 | Index | Feature           | Min  | Max  | Mean  | StdDev |
 |-------|-------------------|------|------|-------|--------|
-| 1     | fixed acidity      | 4.60 | 15.90 | 8.319 | 1.741  |
-| 2     | volatile acidity   | 0.12 | 1.58 | 0.528 | 0.179  |
-| 3     | citric acid        | 0.00 | 1.00 | 0.271 | 0.195  |
+| 1     | fixed acidity     | 4.60 | 15.90 | 8.320 | 1.741  |
+| 2     | volatile acidity  | 0.12 | 1.58 | 0.528 | 0.179  |
+| 3     | citric acid       | 0.00 | 1.00 | 0.271 | 0.195  |
 ...
-| 12    | quality            | 3.00 | 8.00 | 5.636 | 0.808  |
+| 12    | quality           | 3.00 | 8.00 | 5.636 | 0.807  |
