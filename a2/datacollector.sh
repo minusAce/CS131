@@ -37,13 +37,13 @@ while read -r csv_file; do
 					NR > 1 {
 						val = $col
 						if (min == "" || val < min) min = val
-                        		if (max == "" || val > max) max = val
-                        		sum += val
-                        		sumsq += val * val
-                        		count++
-                		}
-                		END {
-                    			if (count > 0) {
+						if (max == "" || val > max) max = val
+						sum += val
+						sumsq += val * val
+						count++
+					}
+					END {
+					if (count > 0) {
                         			mean = sum / count
                         			stddev = sqrt((sumsq - (sum * sum) / count) / count)
                         			printf "| %-5d | %-17s | %-4.2f | %-4.2f | %-5.3f | %-6.3f |\n", col, header, min, max, mean, stddev
