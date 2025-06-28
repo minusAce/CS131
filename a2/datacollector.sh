@@ -2,7 +2,6 @@
 
 echo -n "Please enter a URL to a CSV dataset: "
 read url
-echo $url
 curl -O $url
 
 ZIPFILE=$(ls -t *.zip | head -1)
