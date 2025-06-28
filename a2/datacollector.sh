@@ -19,24 +19,24 @@ fi
 {
 while read -r csv_file; do
 	if [ -f "$csv_file" ]; then
-	echo ""
-	echo "# Feature Summary for $csv_file"
-	echo ""
-	echo "## Feature Index and Names"
-	head -1 "$csv_file" | sed -e 's/"//g' -e 's/;/\n/g' | awk '{print NR ". " $0}'
-	echo ""
-	echo "## Statistics (Numerical Features)"
-	echo "| Index | Feature           | Min  | Max  | Mean  | StdDev |"
-	echo "|-------|-------------------|------|------|-------|--------|"
-	num_cols=$(head -1 "$csv_file" | sed 's/"//g' | awk -F';' '{print NF}')
-	for ((i=1; i<=num_cols; i++)); do
-		header=$(head -1 "$csv_file" | sed 's/"//g' | cut -d ';' -f $i)
-		num_check=$(sed -n '2p' "$csv_file" | cut -d ';' -f $i)
-		if [[ $num_check =~ ^[0-9\.]+$ ]]; then
-			awk -F';' -v col="$i" -v header="$header" '
-                		NR > 1 {
-                    			val = $col
-                        		if (min == "" || val < min) min = val
+		echo ""
+		echo "# Feature Summary for $csv_file"
+		echo ""
+		echo "## Feature Index and Names"
+		head -1 "$csv_file" | sed -e 's/"//g' -e 's/;/\n/g' | awk '{print NR ". " $0}'
+		echo ""
+		echo "## Statistics (Numerical Features)"
+		echo "| Index | Feature           | Min  | Max  | Mean  | StdDev |"
+		echo "|-------|-------------------|------|------|-------|--------|"
+		num_cols=$(head -1 "$csv_file" | sed 's/"//g' | awk -F';' '{print NF}')
+		for ((i=1; i<=num_cols; i++)); do
+			header=$(head -1 "$csv_file" | sed 's/"//g' | cut -d ';' -f $i)
+			num_check=$(sed -n '2p' "$csv_file" | cut -d ';' -f $i)
+			if [[ $num_check =~ ^[0-9\.]+$ ]]; then
+				awk -F';' -v col="$i" -v header="$header" '
+					NR > 1 {
+						val = $col
+						if (min == "" || val < min) min = val
                         		if (max == "" || val > max) max = val
                         		sum += val
                         		sumsq += val * val
