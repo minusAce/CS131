@@ -18,7 +18,7 @@ fi
 
 {
 while read -r csv_file; do
-    if [ -f "$csv_file" ]; then
+	if [ -f "$csv_file" ]; then
 	echo ""
 	echo "# Feature Summary for $csv_file"
 	echo ""
