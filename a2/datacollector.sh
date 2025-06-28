@@ -17,15 +17,18 @@ else
 	exit 1
 fi
 
+{
 while read -r csv_file; do
     if [ -f "$csv_file" ]; then
 	echo ""
         echo "#Feature Summary for $csv_file"
 	echo ""
 	echo "##Feature Index and Names"
-        head -1 "$csv_file" | tr -d '"' | tr ';' '\n' | nl -s '. '
+        head -1 "$csv_file" | sed -e 's/"//g' -e 's/;/\n/g' | awk '{print NR ". " $0}'
 	echo ""
 	echo "## Statistics (Numerical Features)"
+	echo "| Index | Feature           | Min  | Max  | Mean  | StdDev |"
+	echo "|-------|-------------------|------|------|-------|--------|"
 	num_cols=$(head -1 "$csv_file" | tr -d '"' | awk -F';' '{print NF}')
 	for ((i=1; i<=num_cols; i++)); do
 		header=$(head -1 "$csv_file" | tr -d '"' | cut -d ";" -f "$i")
@@ -44,12 +47,8 @@ while read -r csv_file; do
                     			if (count > 0) {
                         			mean = sum / count
                         			stddev = sqrt((sumsq - (sum * sum) / count) / count)
-                        			printf "%s stats:\n", header
-                        			printf "  Min: %.2f\n", min
-                        			printf "  Max: %.2f\n", max
-                        			printf "  Mean: %.3f\n", mean
-                        			printf "  Std Dev: %.3f\n", stddev
-                    			}
+                        			printf "| %-5d | %-17s | %-4.2f | %-4.2f | %-5.3f | %-6.3f |\n", col, header, min, max, mean, stddev
+                        		}
                 		}' "$csv_file"
 		else
         		echo "$header is not numeric"
@@ -57,3 +56,4 @@ while read -r csv_file; do
 	done
     fi
 done < extracted_files.txt
+} > summary.md
