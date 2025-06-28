@@ -21,7 +21,7 @@ fi
 while read -r csv_file; do
     if [ -f "$csv_file" ]; then
 	echo ""
- echo "# Feature Summary for $csv_file"
+	echo "# Feature Summary for $csv_file"
 	echo ""
 	echo "## Feature Index and Names"
  head -1 "$csv_file" | sed -e 's/"//g' -e 's/;/\n/g' | awk '{print NR ". " $0}'
