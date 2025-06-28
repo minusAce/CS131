@@ -24,18 +24,17 @@ The script will:
 # Demo
 Below is a sample run of the script from a terminal:
 
-	$ ./datacollector.sh
+	$ ./datacollector.sh 
 	Please enter a URL to a CSV dataset: https://archive.ics.uci.edu/static/public/186/wine+quality.zip
-	https://archive.ics.uci.edu/static/public/186/wine+quality.zip
-	  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+  	  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                      Dload  Upload   Total   Spent    Left  Speed
-	100 91353    0 91353    0     0   326k      0 --:--:-- --:--:-- --:--:--  327k
+	100 91353    0 91353    0     0   324k      0 --:--:-- --:--:-- --:--:--  323k
 	Downloaded File: wine+quality.zip
 	Unzipping wine+quality.zip
 	Archive:  wine+quality.zip
- 	 inflating: winequality-red.csv     
- 	 inflating: winequality-white.csv   
- 	 inflating: winequality.names       
+  	  inflating: winequality-red.csv     
+  	  inflating: winequality-white.csv   
+  	  inflating: winequality.names      
 	$ cat summary.md 
 
 	# Feature Summary for winequality-red.csv
