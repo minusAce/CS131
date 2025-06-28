@@ -1,7 +1,7 @@
 
-#Feature Summary for winequality-red.csv
+# Feature Summary for winequality-red.csv
 
-##Feature Index and Names
+## Feature Index and Names
 1. fixed acidity
 2. volatile acidity
 3. citric acid
@@ -31,9 +31,9 @@
 | 11    | alcohol           | 8.40 | 14.90 | 10.423 | 1.065  |
 | 12    | quality           | 3.00 | 8.00 | 5.636 | 0.807  |
 
-#Feature Summary for winequality-white.csv
+# Feature Summary for winequality-white.csv
 
-##Feature Index and Names
+## Feature Index and Names
 1. fixed acidity
 2. volatile acidity
 3. citric acid
