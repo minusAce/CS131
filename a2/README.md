@@ -11,7 +11,7 @@ Navigate to the directory containing the script.
 
 Run the script using:
 
-./datacollector.sh
+  ./datacollector.sh
 
 When prompted, enter the URL to a ZIP file containing a CSV dataset.
 
