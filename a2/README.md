@@ -19,7 +19,7 @@ The script will:
   1. Download the ZIP file
   2. Extract the CSV file(s)
   3. Process the CSV file(s)
-  4. Output the result to summary.md
+  4. Output the results to summary.md
 
 # Demo
 Below is a sample run of the script from a terminal:
