@@ -43,17 +43,17 @@ while read -r csv_file; do
 						count++
 					}
 					END {
-					if (count > 0) {
-                        			mean = sum / count
-                        			stddev = sqrt((sumsq - (sum * sum) / count) / count)
-                        			printf "| %-5d | %-17s | %-4.2f | %-4.2f | %-5.3f | %-6.3f |\n", col, header, min, max, mean, stddev
-                        		}
-                		}' "$csv_file"
-		else
-        		echo "$header is not numeric"
-    		fi
-	done
-    fi
+						if (count > 0) {
+							mean = sum / count
+							stddev = sqrt((sumsq - (sum * sum) / count) / count)
+							printf "| %-5d | %-17s | %-4.2f | %-4.2f | %-5.3f | %-6.3f |\n", col, header, min, max, mean, stddev
+						}
+					}' "$csv_file"
+			else
+				echo "$header is not numeric"
+			fi
+		done
+	fi
 done < extracted_files.txt
 } > summary.md
 
