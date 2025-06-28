@@ -25,7 +25,7 @@ The script will:
 # Demo
 Below is a sample run of the script from a terminal:
 
-$ ./datacollector.sh 
+[$ ./datacollector.sh 
 Please enter a URL to a CSV dataset: https://archive.ics.uci.edu/static/public/186/wine+quality.zip
 https://archive.ics.uci.edu/static/public/186/wine+quality.zip
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -55,4 +55,4 @@ $ cat summary.md
 | 2     | volatile acidity  | 0.12 | 1.58 | 0.528 | 0.179  |
 | 3     | citric acid       | 0.00 | 1.00 | 0.271 | 0.195  |
 ...
-| 12    | quality           | 3.00 | 8.00 | 5.636 | 0.807  |
+| 12    | quality           | 3.00 | 8.00 | 5.636 | 0.807  |]
