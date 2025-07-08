@@ -1,0 +1,45 @@
+Task:
+Create a shell script that automates the download and summary generation of CSV datasets.
+
+Requirements:
+The script should be written with bash commands (including sed and awk, if needed).
+When you run this script, it asks for a URL to a CSV dataset
+E.g., https://archive.ics.uci.edu/static/public/186/wine+quality.zipLinks to an external site.
+Make sure your script works with any URLs for tabular datasets in the UCI Machine Learning Repository
+Your script should
+Unzip the CSV file(s), if zipped
+Generate a summary file (summary.md) for each CSV file
+The summary file (summary.md) should include
+A list of all features with the index number
+min/max/mean/standard deviation for numerical columns in a table format
+If needed, numerical columns can be identified by user input after showing the list of features. (This can be automated.)
+
+# Feature Summary for winequality-red.csv
+
+## Feature Index and Names
+1. fixed acidity
+2. volatile acidity
+3. citric acid
+...
+
+## Statistics (Numerical Features)
+| Index | Feature           | Min  | Max  | Mean  | StdDev |
+|-------|-------------------|------|------|-------|--------|
+| 1     | fixed acidity     | 4.60 | 15.90 | 8.319 | 1.741  |
+| 2     | volatile acidity  | 0.12 | 1.58 | 0.528 | 0.179  |
+...
+
+Clarification:
+User inputs allowed are (1) the URL and (2) the column index numbers to identify numerical columns.
+The rest of the processing should be fully automated.
+
+Submission Guide:
+Create an "a2" directory in your cs131 GitHub repo. (Submit git clone <your GitHub repo link> command)
+Put your shell script into the directory (datacollector.sh)
+Also, run your script for the winequality-red.csv and put the resulting summary.md into the directory
+Write a brief explanation of your shell tool in README.md under the a2 directory (cs131/a2/README.md). This file should include sections like:
+What this command does
+How to use this command
+Demo (Copy/Paste the actual terminal execution results)
+(You can read more about README: https://www.makeareadme.com/Links to an external site.)
+You are required to present your command during the class on July 2. You will show the README.md from GitHub while presenting. Format the README so it is clear.
