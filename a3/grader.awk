@@ -26,12 +26,12 @@ NR > 1 {
 	}
 
 	# Uses the Function to get the Average
-	# Sets status equal to Pass or Fail
+	# Sets status equal to Pass or Fail if the Average >= 70
 
 	avg = average(total, count)
 	status = (avg >= 70) ? "Pass" : "Fail"
 
-	# Stores all the values in arrays
+	# Stores all the values in arrays using the Student's ID's
 
 	id = $1
 	name = $2
