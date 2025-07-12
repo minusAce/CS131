@@ -1,9 +1,9 @@
 $ awk -f grader.awk grades.csv
 
-The Name of the Student
-The Total Score - Adding all the Scores Together
-The Average Score - The Average of all the Scores by adding all the scores and dividing by the total number added
-If they Passed or Failed - If their Average Score is greater than or equal to 70
+# The Name of the Student
+# The Total Score - Adding all the Scores Together
+# The Average Score - The Average of all the Scores by adding all the scores and dividing by the total number added
+# If they Passed or Failed - If their Average Score is greater than or equal to 70
 |----------|-----------|-------------|------------|
 |   Name   |   Total   |   Average   |   Status   |
 |----------|-----------|-------------|------------|
@@ -14,14 +14,14 @@ If they Passed or Failed - If their Average Score is greater than or equal to 70
 | Eve      | 265       | 88.333      | Pass       |
 |----------|-----------|-------------|------------|
 
-The Top Student in the Class and the Highest Total Score
+# The Top Student in the Class and the Highest Total Score
 |-------------|-----------|
 | Top Student | Max Score |
 |-------------|-----------|
 | Charlie     | 270       |
 |-------------|-----------|
 
-The Lowest Student in the Class and the Lowest Total Score
+# The Lowest Student in the Class and the Lowest Total Score
 |----------------|--------------|
 | Lowest Student | Lowest Score |
 |----------------|--------------|
