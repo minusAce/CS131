@@ -1,0 +1,47 @@
+Objective
+Learn how to build a complex awk application.
+
+Submission Guide
+You need to submit
+
+This assignment should be done, using your Google Cloud VM instance.
+YOU MUST NOT USE ANY GenAI. When plagiarism is suspected, you will be orally examined about the script logic. Failing to respond to the oral exam request in a timely manner results in a failing grade on this assignment. 
+The following files should be under an a3 directory in your git repo.
+cmnd.log (including all commands relevant to the tasks)
+a3.txt that includes all the outputs from the following tasks. (Make sure you annotate this output.)
+grader.awk that includes your awk program. Make sure you add some comments. We will execute the following command for grading. 
+awk -f grader.awk grades.csv
+As usual, submit the git clone link.
+Assumption:
+Your data file should look like this:
+
+StudentID,Name,CS146,CS131,CS100W
+101,Alice,85,90,78
+102,Bob,76,82,88
+103,Charlie,90,85,95
+104,David,65,70,60
+105,Eve,88,92,85
+Note: we will use a separate file with the same format for grading.
+
+Tasks:
+Stores the sum of grades for each student in an associative array.
+Calculates the average grade for each student and classifies them as Pass (average ≥ 70) or Fail. (Must use a user-defined function to calculate the average.)
+Determine the highest and lowest scoring students (total score)
+Print the following for each student at the end
+Student name
+Total score
+Average score
+Status (pass/fail)
+Also, print the top and lowest scoring students
+
+Rubric
+Criteria	Ratings			Pts
+if statements				1pts
+associative array       		1pts
+for loop				1pts
+User-defined function   		2pts
+Calculation (total, average)    	1pts
+Correct outputs				2pts
+Commenting / Format of the output 	2pts
+
+			  Total Points: 10

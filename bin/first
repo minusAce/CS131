@@ -1,0 +1,16 @@
+#!/bin/bash
+# Program to output a system information page
+
+title="System Information Page for $HOSTNAME"
+echo "<html>
+	<head>
+		<title>$title</title>
+	</head>
+	<body>
+		<h1>$title</h1>
+		<p>Date & Time: $(date)</p>
+		<pre>Disk Space:
+$(df -h)</pre>
+		<pre>Home Space: $(du)</pre>
+	</body>
+</html>"
