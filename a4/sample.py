@@ -3,7 +3,7 @@ from pyspark.ml.feature import VectorAssembler
 from pyspark.ml import Pipeline
 from pyspark.ml.pipeline import PipelineModel
 from pyspark.ml.regression import DecisionTreeRegressor
-from pyspark.sql import SparkSession # Create a SparkSession
+from pyspark.sql import SparkSession
 
 spark = SparkSession.builder.appName("MYAPP").getOrCreate()
 
