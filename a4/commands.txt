@@ -1,0 +1,5 @@
+# Builds the Docker Image to have numpy included
+docker build -t spark-py-numpy .
+
+# Runs the app and puts the results into output.txt
+run --rm -v %cd%:/app -w /app spark-py-numpy /opt/spark/bin/spark-submit /app/sample.py > output.txt
