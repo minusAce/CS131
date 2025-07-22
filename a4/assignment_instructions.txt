@@ -1,0 +1,22 @@
+Objective
+Learn how to build a Spark application with MLlib
+
+Tasks
+1. Create a dataset that only contains passenger_count (4th col), pulocationid (8th col), dolocationid (9th col), and total_amount (17th col) based on the 2019-04.csv dataset.
+In the Jupyter notebook, show the first 10 entries in the created dataset.
+
+2. Create trainDF and testDF.
+
+3. Create a decision tree regressor to predict total_amount from the other three features.
+
+4. Create a pipeline.
+
+5. Train the model. 
+
+6. Show the predicted results along with the three features in the notebook. (Show the first 10 entries.)
+
+7. Evaluate the model with RMSE. (The RMSE value should be in the notebook.)
+
+Submission Guideline
+  Download the Jupyter notebook executed on a Spark cluster and push it to your GitHub Repo, cs131/a4
+  Submit the link to the repo.
