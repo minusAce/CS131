@@ -44,11 +44,11 @@ pipeline = Pipeline(stages=[vecAssembler, dtr])
 dtrModel = dtr.fit(vecTrainDF)
 pipelineModel = pipeline.fit(trainDF)
 
-# 6. Show the predicted results along with the three features in the notebook. (Show the first 10 entries.)
+# 6. Show the predicted results along with the three features. (Show the first 10 entries.)
 predDF = pipelineModel.transform(testDF)
 predDF.select("passenger_count", "pulocationid", "dolocationid", "features", "total_amount", "prediction").show(10)
 
-# 7. Evaluate the model with RMSE. (The RMSE value should be in the notebook.)
+# 7. Evaluate the model with RMSE.
 regressionEvaluator = RegressionEvaluator(
       predictionCol="prediction",
       labelCol="total_amount",
