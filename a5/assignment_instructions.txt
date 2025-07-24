@@ -1,0 +1,54 @@
+Objective
+Learn how to extract information and visualize it using command-line tools and Spark
+
+Guideline
+This is a team project assignment. Form a group of two students using the People tab on Canvas.
+In this assignment, you will perform data analysis on a dataset (or multiple related datasets) of your choice.
+You can choose any dataset.
+Some examples here: 
+	https://archive.ics.uci.edu/ml/datasets.phpLinks to an external site.
+	https://www.kaggle.com/datasetsLinks to an external site.
+	https://cseweb.ucsd.edu/~jmcauley/datasets.htmlLinks to an external site.
+	https://datasetsearch.research.google.com/Links to an external site.
+Decide the project objective(s): What do you want to tell using the data?
+Collect metadata of the dataset(s)
+	The number of entries
+	Features
+	Value ranges (mean, percentile, ...)
+Extract "nontrivial" information from the dataset. It is REQUIRED to use Spark MLlib. 
+	What can you say from the data?
+	Any interesting data trends that cannot be easily guessed or can be used to justify some hypothesis?
+Visualize the data (at least TWO types of nontrivial plots)
+	Consider: Violin/Box Plots, Histogram, Density Plot, Correlation Matrix, Hexagonal Binning
+	Get some plot ideas from: https://github.com/rougier/scientific-visualization-bookLinks to an external site.
+
+Submission
+Put all command files (command history, awk/sed files, shell script, Spark codes...) into the a5 directory and push to your GitHub repo.
+Create presentation slides (up to 5 pages) including
+	(1) your project objectives
+	(2) dataset metadata
+	(3) Summary paragraph(s) explaining the information you found through data manipulation
+	(4) A brief explanation about the tools (commands/Spark code logic) you used for this project
+	(5) Two plots 
+Submit the git clone link and the PDF file to Canvas.
+
+Presentation
+We will have a mandatory poster presentation session on July 30.
+
+							Criteria										Ratings	Pts
+Metadata
+Data statistics are clearly shown, using key metrics
+																		2 pts
+Nontrivial findings
+Finds hidden patterns and/or Provides analytical support for a claim that is not obvious from a quick look.
+																		2 pts
+Command explanation
+The logic flow is well summarized in the PDF poster. (Not only listing command names but summarizing the steps.)
+																		2 pts
+Two meaningful plots
+A "meaningful" plot should provide new information or insight, which cannot be obtained by looking at values in the dataset table.
+																		2 pts
+GitHub repo
+The repo is organized for reproducibility.
+																		2 pts
+																     Total Points: 10
