@@ -1,0 +1,8 @@
+Non-spark-on-k8s command provided, proceeding in pass-through mode...
+Traceback (most recent call last):
+  File "/app/sample.py", line 2, in <module>
+    from pyspark.ml.feature import StringIndexer, VectorAssembler
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/ml/__init__.py", line 22, in <module>
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/ml/base.py", line 40, in <module>
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/ml/param/__init__.py", line 32, in <module>
+ModuleNotFoundError: No module named 'numpy'
