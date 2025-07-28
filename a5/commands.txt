@@ -1,5 +1,8 @@
 # The dataset
 https://archive.ics.uci.edu/dataset/19/car+evaluation
 
+# Builds the Docker Image to have numpy included
+docker build -t spark-py-numpy .
+
 # Runs the app and puts the results into output.txt (Windows Command)
-docker run --rm -v %cd%:/app -w /app apache/spark-py /opt/spark/bin/spark-submit /app/sample.py > output.txt
+docker run --rm -v %cd%:/app -w /app spark-py-numpy /opt/spark/bin/spark-submit /app/sample.py > output.txt
