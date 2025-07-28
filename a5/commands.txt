@@ -1,2 +1,5 @@
+# The dataset
+https://archive.ics.uci.edu/dataset/19/car+evaluation
+
 # Runs the app and puts the results into output.txt (Windows Command)
 docker run --rm -v %cd%:/app -w /app apache/spark-py /opt/spark/bin/spark-submit /app/sample.py > output.txt
