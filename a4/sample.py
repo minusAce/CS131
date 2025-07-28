@@ -26,7 +26,7 @@ taxiDF_filtered = taxiDF.filter(taxiDF.passenger_count != 0)
 trainDF, testDF = taxiDF_filtered.randomSplit([.8, .2], seed=42)
 print(f"There are {trainDF.count()} rows in the training set and {testDF.count()} in the test set")
 
-# 2b. Transform the data
+# Task 2b. Transform the data
 vecAssembler = VectorAssembler(
       inputCols=["passenger_count", "pulocationid", "dolocationid"],
       outputCol="features"
@@ -34,21 +34,21 @@ vecAssembler = VectorAssembler(
 vecTrainDF = vecAssembler.transform(trainDF)
 vecTrainDF.select("passenger_count", "pulocationid", "dolocationid", "features", "total_amount").show(10)
 
-# 3. Create a decision tree regressor to predict total_amount from the other three features.
+# Task 3. Create a decision tree regressor to predict total_amount from the other three features.
 dtr = DecisionTreeRegressor(featuresCol="features", labelCol="total_amount")
 
-# 4. Create a pipeline.
+# Task 4. Create a pipeline.
 pipeline = Pipeline(stages=[vecAssembler, dtr])
 
-# 5. Train the model.
+# Task 5. Train the model.
 dtrModel = dtr.fit(vecTrainDF)
 pipelineModel = pipeline.fit(trainDF)
 
-# 6. Show the predicted results along with the three features. (Show the first 10 entries.)
+# Task 6. Show the predicted results along with the three features. (Show the first 10 entries.)
 predDF = pipelineModel.transform(testDF)
 predDF.select("passenger_count", "pulocationid", "dolocationid", "features", "total_amount", "prediction").show(10)
 
-# 7. Evaluate the model with RMSE.
+# Task 7. Evaluate the model with RMSE.
 regressionEvaluator = RegressionEvaluator(
       predictionCol="prediction",
       labelCol="total_amount",

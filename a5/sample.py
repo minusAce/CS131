@@ -35,11 +35,11 @@ pipeline_oneNT = Pipeline(stages=indexers_oneNT + [vecAssembler_oneNT, dt_oneNT]
 model_oneNT = pipeline_oneNT.fit(oneNT)
 
 predictions_oneNT = model_oneNT.transform(oneNT)
-predictions_oneNT.select("buying", "safety", "class", "prediction").show(10)
+predictions_oneNT.show(10)
 
 evaluator_oneNT = MulticlassClassificationEvaluator(labelCol="class_idx", predictionCol="prediction", metricName="accuracy")
 accuracy_oneNT = evaluator_oneNT.evaluate(predictions_oneNT)
-print("Accuracy (buying + safety):", round(accuracy_oneNT, 3))
+print(f"Accuracy (buying + safety): {accuracy_oneNT}")
 
 # How much of an effect does the 'doors', 'persons', and 'lug_boot' features have on the 'class'?
 # The amount of doors, persons, and the size of the lug_boot don't have a significant effect on the class.
@@ -65,8 +65,8 @@ pipeline_twoNT = Pipeline(stages=indexers_twoNT + [assembler_twoNT, dt_twoNT])
 model_twoNT = pipeline_twoNT.fit(twoNT_filtered)
 
 predictions_twoNT = model_twoNT.transform(twoNT_filtered)
-predictions_twoNT.select("doors", "persons", "lug_boot", "class", "prediction").show(10)
+predictions_twoNT.show(10)
 
 evaluator_twoNT = MulticlassClassificationEvaluator(labelCol="class_idx", predictionCol="prediction", metricName="accuracy")
 accuracy_twoNT = evaluator_twoNT.evaluate(predictions_twoNT)
-print("Accuracy (doors + persons + lug_boot):", round(accuracy_twoNT, 3))
+print(f"Accuracy (doors + persons + lug_boot): {accuracy_twoNT}")
