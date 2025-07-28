@@ -1,8 +1,51 @@
 Non-spark-on-k8s command provided, proceeding in pass-through mode...
-Traceback (most recent call last):
-  File "/app/sample.py", line 2, in <module>
-    from pyspark.ml.feature import StringIndexer, VectorAssembler
-  File "/opt/spark/python/lib/pyspark.zip/pyspark/ml/__init__.py", line 22, in <module>
-  File "/opt/spark/python/lib/pyspark.zip/pyspark/ml/base.py", line 40, in <module>
-  File "/opt/spark/python/lib/pyspark.zip/pyspark/ml/param/__init__.py", line 32, in <module>
-ModuleNotFoundError: No module named 'numpy'
++------+------+-----+----------+
+|buying|safety|class|prediction|
++------+------+-----+----------+
+| vhigh|   low|unacc|       0.0|
+| vhigh|   med|unacc|       0.0|
+| vhigh|  high|unacc|       0.0|
+| vhigh|   low|unacc|       0.0|
+| vhigh|   med|unacc|       0.0|
+| vhigh|  high|unacc|       0.0|
+| vhigh|   low|unacc|       0.0|
+| vhigh|   med|unacc|       0.0|
+| vhigh|  high|unacc|       0.0|
+| vhigh|   low|unacc|       0.0|
++------+------+-----+----------+
+only showing top 10 rows
+
+Accuracy (buying + safety): 0.703
++-----+-------+--------+-----+
+|doors|persons|lug_boot|class|
++-----+-------+--------+-----+
+|    2|      2|   small|unacc|
+|    2|      2|   small|unacc|
+|    2|      2|   small|unacc|
+|    2|      2|     med|unacc|
+|    2|      2|     med|unacc|
+|    2|      2|     med|unacc|
+|    2|      2|     big|unacc|
+|    2|      2|     big|unacc|
+|    2|      2|     big|unacc|
+|    2|      4|   small|unacc|
++-----+-------+--------+-----+
+only showing top 10 rows
+
++-----+-------+--------+-----+----------+
+|doors|persons|lug_boot|class|prediction|
++-----+-------+--------+-----+----------+
+|    2|      2|   small|unacc|       0.0|
+|    2|      2|   small|unacc|       0.0|
+|    2|      2|   small|unacc|       0.0|
+|    2|      2|     med|unacc|       0.0|
+|    2|      2|     med|unacc|       0.0|
+|    2|      2|     med|unacc|       0.0|
+|    2|      2|     big|unacc|       0.0|
+|    2|      2|     big|unacc|       0.0|
+|    2|      2|     big|unacc|       0.0|
+|    2|      4|   small|unacc|       0.0|
++-----+-------+--------+-----+----------+
+only showing top 10 rows
+
+Accuracy (doors + persons + lug_boot): 0.814
