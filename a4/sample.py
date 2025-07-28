@@ -57,7 +57,7 @@ regressionEvaluator = RegressionEvaluator(
 rmse = regressionEvaluator.evaluate(predDF)
 print(f"Root Mean Squared Error (RMSE): {rmse}")
 
-# Saves the pipeline model then loads it
+# Saves the pipeline model then loads it.
 pipelinePath = "/tmp/lr-pipeline-model"
 pipelineModel.write().overwrite().save(pipelinePath)
 savedPipelineModel = PipelineModel.load(pipelinePath)
