@@ -1,9 +1,8 @@
 from pyspark.sql import SparkSession
-from pyspark.ml.feature import StringIndexer, VectorAssembler
+from pyspark.ml.feature import StringIndexer, VectorAssembler, IndexToString
 from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml import Pipeline
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-from pyspark.ml import PipelineModel
 
 spark = SparkSession.builder.appName("CarEvaulation").getOrCreate()
 
@@ -18,55 +17,67 @@ df = df.toDF("buying", "maint", "doors", "persons", "lug_boot", "safety", "class
 
 # How much of an effect does the 'buying' and 'safety' features have on the 'class'?
 # Generally if a cars buying and safety ratings are high, the class will be better.
-oneNT = df.select("buying", "safety", "class")
-indexers_oneNT = [
+carDF_1 = df.select("buying", "safety", "class")
+trainDF_1, testDF_1 = carDF_1.randomSplit([0.8, 0.2], seed=42)
+
+indexers_1 = [
     StringIndexer(inputCol="buying", outputCol="buying_idx"),
     StringIndexer(inputCol="safety", outputCol="safety_idx"),
     StringIndexer(inputCol="class", outputCol="class_idx")
 ]
 
-vecAssembler_oneNT = VectorAssembler(
+vecAssembler_1 = VectorAssembler(
     inputCols=["buying_idx", "safety_idx"],
     outputCol="features"
 )
-dt_oneNT = DecisionTreeClassifier(featuresCol="features", labelCol="class_idx")
 
-pipeline_oneNT = Pipeline(stages=indexers_oneNT + [vecAssembler_oneNT, dt_oneNT])
-model_oneNT = pipeline_oneNT.fit(oneNT)
+dt_1 = DecisionTreeClassifier(featuresCol="features", labelCol="class_idx")
 
-predictions_oneNT = model_oneNT.transform(oneNT)
-predictions_oneNT.show(10)
+labelConverter_1 = IndexToString(inputCol="prediction", outputCol="predicted_label", labels=indexers_1[-1].fit(carDF_1).labels)
 
-evaluator_oneNT = MulticlassClassificationEvaluator(labelCol="class_idx", predictionCol="prediction", metricName="accuracy")
-accuracy_oneNT = evaluator_oneNT.evaluate(predictions_oneNT)
-print(f"Accuracy (buying + safety): {accuracy_oneNT}")
+pipeline_1 = Pipeline(stages=indexers_1 + [vecAssembler_1, dt_1, labelConverter_1])
+pipelineModel_1 = pipeline_1.fit(trainDF_1)
+
+predDF_1 = pipelineModel_1.transform(testDF_1)
+predDF_1.select("buying", "safety", "class", "predicted_label").show(10)
+
+evaluator_1 = MulticlassClassificationEvaluator(
+    labelCol="class_idx", predictionCol="prediction", metricName="accuracy"
+)
+accuracy_1 = evaluator_1.evaluate(predDF_1)
+print(f"Accuracy (buying + safety): {accuracy_1}")
 
 # How much of an effect does the 'doors', 'persons', and 'lug_boot' features have on the 'class'?
 # The amount of doors, persons, and the size of the lug_boot don't have a significant effect on the class.
-twoNT = df.select("doors", "persons", "lug_boot", "class")
-twoNT_filtered = twoNT.filter(
-    ((twoNT.doors == "2") | (twoNT.persons == "2")) | (twoNT.lug_boot == "small")
+carDF_2 = df.select("doors", "persons", "lug_boot", "class")
+filteredDF_2 = carDF_2.filter(
+    (carDF_2.doors == "2") | (carDF_2.persons == "2") | (carDF_2.lug_boot == "small")
 )
-twoNT_filtered.show(10)
-indexers_twoNT = [
+trainDF_2, testDF_2 = filteredDF_2.randomSplit([0.8, 0.2], seed=42)
+
+indexers_2 = [
     StringIndexer(inputCol="doors", outputCol="doors_idx"),
     StringIndexer(inputCol="persons", outputCol="persons_idx"),
     StringIndexer(inputCol="lug_boot", outputCol="lug_boot_idx"),
     StringIndexer(inputCol="class", outputCol="class_idx")
 ]
 
-assembler_twoNT = VectorAssembler(
+vecAssembler_2 = VectorAssembler(
     inputCols=["doors_idx", "persons_idx", "lug_boot_idx"],
     outputCol="features"
 )
-dt_twoNT = DecisionTreeClassifier(labelCol="class_idx", featuresCol="features")
 
-pipeline_twoNT = Pipeline(stages=indexers_twoNT + [assembler_twoNT, dt_twoNT])
-model_twoNT = pipeline_twoNT.fit(twoNT_filtered)
+dt_2 = DecisionTreeClassifier(featuresCol="features", labelCol="class_idx")
+labelConverter_2 = IndexToString(inputCol="prediction", outputCol="predicted_label", labels=indexers_2[-1].fit(filteredDF_2).labels)
 
-predictions_twoNT = model_twoNT.transform(twoNT_filtered)
-predictions_twoNT.show(10)
+pipeline_2 = Pipeline(stages=indexers_2 + [vecAssembler_2, dt_2, labelConverter_2])
+pipelineModel_2 = pipeline_2.fit(trainDF_2)
 
-evaluator_twoNT = MulticlassClassificationEvaluator(labelCol="class_idx", predictionCol="prediction", metricName="accuracy")
-accuracy_twoNT = evaluator_twoNT.evaluate(predictions_twoNT)
-print(f"Accuracy (doors + persons + lug_boot): {accuracy_twoNT}")
+predDF_2 = pipelineModel_2.transform(testDF_2)
+predDF_2.select("doors", "persons", "lug_boot", "class", "predicted_label").show(10)
+
+evaluator_2 = MulticlassClassificationEvaluator(
+    labelCol="class_idx", predictionCol="prediction", metricName="accuracy"
+)
+accuracy_2 = evaluator_2.evaluate(predDF_2)
+print(f"Accuracy (doors + persons + lug_boot): {accuracy_2}")
