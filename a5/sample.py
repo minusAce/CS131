@@ -24,9 +24,9 @@ good_df = df.filter(col('class') == 'good')
 vgood_df = df.filter(col('class') == 'vgood')
 
 oversampled_acc_df = acc_df.sample(withReplacement=True, fraction=3.15, seed=42)
-oversampled_good_df = good_df.sample(withReplacement=True, fraction=18.6, seed=42)
-oversampled_vgood_df = vgood_df.sample(withReplacement=True, fraction=17.5, seed=42)
-balanced_df = unacc_df.union(oversampled_acc_df).union(oversampled_vgood_df).union(oversampled_good_df)
+oversampled_good_df = good_df.sample(withReplacement=True, fraction=17.3, seed=42)
+oversampled_vgood_df = vgood_df.sample(withReplacement=True, fraction=17.9, seed=42)
+balanced_df = unacc_df.union(oversampled_acc_df).union(oversampled_good_df).union(oversampled_vgood_df)
 print("Balanced Dataset")
 balanced_df.groupBy("class").count().show()
 

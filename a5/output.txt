@@ -15,12 +15,12 @@ Balanced Dataset
 +-----+-----+
 |unacc| 1210|
 |  acc| 1199|
-|vgood| 1147|
-| good| 1281|
+| good| 1191|
+|vgood| 1186|
 +-----+-----+
 
 +------+-----+-----+---------------+
-|buying|maint|class|predicted_label|
+|buying|maint|class|predicted_class|
 +------+-----+-----+---------------+
 |  high| high|unacc|            acc|
 |  high| high|unacc|            acc|
@@ -35,9 +35,9 @@ Balanced Dataset
 +------+-----+-----+---------------+
 only showing top 10 rows
 
-Accuracy (buying + maint): 0.6292735042735043
+Accuracy (buying + maint): 0.6248648648648648
 +-----+-------+--------+------+-----+---------------+
-|doors|persons|lug_boot|safety|class|predicted_label|
+|doors|persons|lug_boot|safety|class|predicted_class|
 +-----+-------+--------+------+-----+---------------+
 |    2|      2|     big|  high|unacc|          unacc|
 |    2|      2|     big|  high|unacc|          unacc|
@@ -52,4 +52,4 @@ Accuracy (buying + maint): 0.6292735042735043
 +-----+-------+--------+------+-----+---------------+
 only showing top 10 rows
 
-Accuracy (doors + persons + lug_boot + safety): 0.6816239316239316
+Accuracy (doors + persons + lug_boot + safety): 0.6637837837837838
