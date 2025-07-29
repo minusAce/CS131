@@ -50,7 +50,7 @@ dt_1 = DecisionTreeClassifier(featuresCol="features", labelCol="class_idx")
 
 labelConverter_1 = IndexToString(
     inputCol="prediction",
-    outputCol="predicted_label",
+    outputCol="predicted_class",
     labels=indexers_1[-1].fit(carDF_1).labels
 )
 
@@ -58,7 +58,7 @@ pipeline_1 = Pipeline(stages=indexers_1 + [vecAssembler_1, dt_1, labelConverter_
 pipelineModel_1 = pipeline_1.fit(trainDF_1)
 
 predDF_1 = pipelineModel_1.transform(testDF_1)
-predDF_1.select("buying", "maint", "class", "predicted_label").show(10)
+predDF_1.select("buying", "maint", "class", "predicted_class").show(10)
 
 evaluator_1 = MulticlassClassificationEvaluator(
     labelCol="class_idx", predictionCol="prediction", metricName="accuracy"
@@ -87,7 +87,7 @@ vecAssembler_2 = VectorAssembler(
 dt_2 = DecisionTreeClassifier(featuresCol="features", labelCol="class_idx")
 labelConverter_2 = IndexToString(
     inputCol="prediction",
-    outputCol="predicted_label",
+    outputCol="predicted_class",
     labels=indexers_2[-1].fit(carDF_2).labels
 )
 
@@ -95,7 +95,7 @@ pipeline_2 = Pipeline(stages=indexers_2 + [vecAssembler_2, dt_2, labelConverter_
 pipelineModel_2 = pipeline_2.fit(trainDF_2)
 
 predDF_2 = pipelineModel_2.transform(testDF_2)
-predDF_2.select("doors", "persons", "lug_boot", "safety", "class", "predicted_label").show(10)
+predDF_2.select("doors", "persons", "lug_boot", "safety", "class", "predicted_class").show(10)
 
 evaluator_2 = MulticlassClassificationEvaluator(
     labelCol="class_idx", predictionCol="prediction", metricName="accuracy"
