@@ -1,35 +1,55 @@
 Non-spark-on-k8s command provided, proceeding in pass-through mode...
-+------+------+-----+---------------+
-|buying|safety|class|predicted_label|
-+------+------+-----+---------------+
-|  high|  high|  acc|          unacc|
-|  high|  high|  acc|          unacc|
-|  high|  high|  acc|          unacc|
-|  high|  high|  acc|          unacc|
-|  high|  high|  acc|          unacc|
-|  high|  high|  acc|          unacc|
-|  high|  high|  acc|          unacc|
-|  high|  high|  acc|          unacc|
-|  high|  high|  acc|          unacc|
-|  high|  high|  acc|          unacc|
-+------+------+-----+---------------+
+Unbalanced Dataset
++-----+-----+
+|class|count|
++-----+-----+
+|unacc| 1210|
+|  acc|  384|
+|vgood|   65|
+| good|   69|
++-----+-----+
+
+Balanced Dataset
++-----+-----+
+|class|count|
++-----+-----+
+|unacc| 1210|
+|  acc| 1199|
+|vgood| 1147|
+| good| 1281|
++-----+-----+
+
++------+-----+-----+---------------+
+|buying|maint|class|predicted_label|
++------+-----+-----+---------------+
+|  high| high|unacc|            acc|
+|  high| high|unacc|            acc|
+|  high| high|unacc|            acc|
+|  high| high|unacc|            acc|
+|  high| high|unacc|            acc|
+|  high| high|unacc|            acc|
+|  high| high|unacc|            acc|
+|  high| high|unacc|            acc|
+|  high| high|unacc|            acc|
+|  high| high|unacc|            acc|
++------+-----+-----+---------------+
 only showing top 10 rows
 
-Accuracy (buying + safety): 0.6902356902356902
-+-----+-------+--------+-----+---------------+
-|doors|persons|lug_boot|class|predicted_label|
-+-----+-------+--------+-----+---------------+
-|    2|      2|     big|unacc|          unacc|
-|    2|      2|     big|unacc|          unacc|
-|    2|      2|     big|unacc|          unacc|
-|    2|      2|     big|unacc|          unacc|
-|    2|      2|     big|unacc|          unacc|
-|    2|      2|     big|unacc|          unacc|
-|    2|      2|     big|unacc|          unacc|
-|    2|      2|     big|unacc|          unacc|
-|    2|      2|     big|unacc|          unacc|
-|    2|      2|     big|unacc|          unacc|
-+-----+-------+--------+-----+---------------+
+Accuracy (buying + maint): 0.6292735042735043
++-----+-------+--------+------+-----+---------------+
+|doors|persons|lug_boot|safety|class|predicted_label|
++-----+-------+--------+------+-----+---------------+
+|    2|      2|     big|  high|unacc|          unacc|
+|    2|      2|     big|  high|unacc|          unacc|
+|    2|      2|     big|  high|unacc|          unacc|
+|    2|      2|     big|  high|unacc|          unacc|
+|    2|      2|     big|   low|unacc|          unacc|
+|    2|      2|     big|   low|unacc|          unacc|
+|    2|      2|     big|   low|unacc|          unacc|
+|    2|      2|     big|   med|unacc|          unacc|
+|    2|      2|     big|   med|unacc|          unacc|
+|    2|      2|     big|   med|unacc|          unacc|
++-----+-------+--------+------+-----+---------------+
 only showing top 10 rows
 
-Accuracy (doors + persons + lug_boot): 0.795
+Accuracy (doors + persons + lug_boot + safety): 0.6816239316239316
