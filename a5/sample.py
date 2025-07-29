@@ -4,7 +4,7 @@ from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml import Pipeline
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
-spark = SparkSession.builder.appName("CarEvaulation").getOrCreate()
+spark = SparkSession.builder.appName("CarEvaluation").getOrCreate()
 
 data_file = "car.data"
 
