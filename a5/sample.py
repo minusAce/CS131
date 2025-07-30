@@ -102,3 +102,22 @@ evaluator_2 = MulticlassClassificationEvaluator(
 )
 accuracy_2 = evaluator_2.evaluate(predDF_2)
 print(f"Accuracy (doors + persons + lug_boot + safety): {accuracy_2}")
+
+# Export predictions as CSV
+predDF_1.select(
+    "buying", 
+    "maint", 
+    "class", 
+    "predicted_class"
+).coalesce(1).write.csv("out/cost_eval", header=True, mode="overwrite")
+
+predDF_2.select(
+        "doors",
+        "persons",
+        "lug_boot",
+        "safety",
+        "class",
+        "predicted_class"
+).coalesce(1).write.csv("out/util_eval", header=True, mode="overwrite")
+
+spark.stop()

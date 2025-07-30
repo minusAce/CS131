@@ -1,4 +1,3 @@
-Non-spark-on-k8s command provided, proceeding in pass-through mode...
 Unbalanced Dataset
 +-----+-----+
 |class|count|
